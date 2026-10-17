@@ -2,5 +2,5 @@
   "name": "Campus Expense Tracker",
   "description": "Student budget and expense tracking app built with Jetpack Compose, Room database, and Material Design 3.",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": []
 }
