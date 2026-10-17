@@ -4,8 +4,7 @@ import android.content.Context
 
 /**
  * Dependency Injection container at the application level.
- * Direct implementation of the manual DI pattern taught in
- * Android Basics with Compose Unit 5 & 6.
+ * Provides application-wide repository dependencies.
  */
 interface AppContainer {
     val expenseRepository: ExpenseRepository

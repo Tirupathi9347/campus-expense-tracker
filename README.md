@@ -2,8 +2,6 @@
 
 A modern, offline-first Android application designed to help college and university students manage their daily living expenses, monitor monthly budgets, and develop healthy financial habits.
 
-Developed as a capstone project during the **Android Developer Virtual Internship** (B.Tech curriculum).
-
 ---
 
 ## 📌 Problem Statement
@@ -238,19 +236,3 @@ The project includes an automated unit test suite verifying all critical busines
 * **CSV / PDF Export:** Export transaction history for college record-keeping or personal archiving.
 * **Receipt Image Attachments:** Attach photos of canteen or bookstore bills to individual transactions.
 * **Recurring Fixed Expenses:** Auto-log recurring monthly obligations like room rent or mess subscriptions.
-
----
-
-## 🎓 Academic & Internship Context
-
-This application was developed as part of the **B.Tech Android Developer Virtual Internship**, demonstrating competencies taught in the official **Android Basics with Compose** curriculum:
-* **Unit 1 & 2:** Kotlin fundamentals, Compose layout composables, state hoisting, and reactive UI updates.
-* **Unit 3 & 4:** Architecture components (`ViewModel`, `StateFlow`, UDF pattern), Material 3 styling, and Jetpack Navigation.
-* **Unit 5 & 6:** Coroutines, Flow, SQLite persistence with Room Database, and Preferences DataStore.
-* **Unit 7 & 8:** Automated unit testing, code modularization, and Git version control practices.
-
----
-
-## 📄 License
-
-This project is developed for educational and academic portfolio purposes.

@@ -4,7 +4,6 @@ import kotlinx.coroutines.flow.Flow
 
 /**
  * Repository interface defining data access operations for expenses and category budget caps.
- * Represents the repository pattern taught in Android Basics with Compose Unit 6.
  */
 interface ExpenseRepository {
     fun getAllExpensesStream(): Flow<List<Expense>>

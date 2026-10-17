@@ -24,7 +24,6 @@ import java.io.IOException
 
 /**
  * Robolectric tests for Room database operations: insert, query Flow, update, and delete.
- * Implements Android Basics with Compose Unit 6: Data Persistence Testing.
  */
 @RunWith(RobolectricTestRunner::class)
 @Config(sdk = [34])

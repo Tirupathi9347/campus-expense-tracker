@@ -5,7 +5,6 @@ import androidx.room.PrimaryKey
 
 /**
  * Room Entity representing an expense entry.
- * Implements Android Basics with Compose Unit 6: Data Persistence.
  */
 @Entity(tableName = "expenses")
 data class Expense(

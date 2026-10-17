@@ -1,5 +1,9 @@
 package com.example.ui.settings
 
+import androidx.compose.foundation.Image
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.painterResource
+import com.example.R
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
@@ -195,7 +199,7 @@ fun SettingsScreen(
                 }
             }
 
-            // Section 2: App Theme Selection (Light, Dark, OG Shine)
+            // Section 2: App Theme Selection (System, Light, Dark)
             Card(
                 shape = RoundedCornerShape(20.dp),
                 colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
@@ -235,8 +239,7 @@ fun SettingsScreen(
                     ) {
                         val themes = listOf(
                             Pair(AppTheme.LIGHT, "Light"),
-                            Pair(AppTheme.DARK, "Dark"),
-                            Pair(AppTheme.OG_SHINE, "OG Shine")
+                            Pair(AppTheme.DARK, "Dark")
                         )
 
                         themes.forEach { (theme, label) ->
@@ -457,18 +460,26 @@ fun SettingsScreen(
                     verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
-                        Icon(
-                            imageVector = Icons.Default.Info,
-                            contentDescription = null,
-                            tint = MaterialTheme.colorScheme.primary,
-                            modifier = Modifier.size(22.dp)
+                        Image(
+                            painter = painterResource(id = R.drawable.app_logo),
+                            contentDescription = "Campus Expense Tracker Logo",
+                            modifier = Modifier
+                                .size(36.dp)
+                                .clip(RoundedCornerShape(8.dp))
                         )
-                        Spacer(modifier = Modifier.width(8.dp))
-                        Text(
-                            text = "Campus Expense Tracker",
-                            style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Bold),
-                            color = MaterialTheme.colorScheme.onSurface
-                        )
+                        Spacer(modifier = Modifier.width(12.dp))
+                        Column {
+                            Text(
+                                text = "Campus Expense Tracker",
+                                style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Bold),
+                                color = MaterialTheme.colorScheme.onSurface
+                            )
+                            Text(
+                                text = "Spend wisely. Stay on track.",
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                        }
                     }
 
                     Text(

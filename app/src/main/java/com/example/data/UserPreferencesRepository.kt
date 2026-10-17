@@ -18,8 +18,7 @@ val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "ca
 enum class AppTheme(val storageKey: String, val displayName: String) {
     SYSTEM("SYSTEM", "System Default"),
     LIGHT("LIGHT", "Light"),
-    DARK("DARK", "Dark"),
-    OG_SHINE("OG_SHINE", "OG Shine");
+    DARK("DARK", "Dark");
 
     companion object {
         fun fromStorageKey(key: String?): AppTheme {
@@ -37,7 +36,6 @@ data class UserPreferences(
 
 /**
  * Repository for managing user preferences via Jetpack Preferences DataStore.
- * Demonstrates Android Basics with Compose Unit 6: Preferences DataStore.
  */
 class UserPreferencesRepository(
     private val context: Context

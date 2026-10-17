@@ -63,36 +63,6 @@ val OutlineDark = Color(0xFF616A62)
 val OutlineVariantDark = Color(0xFF3A413B)
 
 // ==========================================
-// 3. OG Shine Theme Colors (og-shine-theme.json)
-// Foundation: surface=#0a0a0a, accent=#50ecb3, text=#ebebeb
-// ==========================================
-val SurfaceShine = Color(0xFF0A0A0A) // From JSON: surface #0a0a0a
-val BackgroundShine = Color(0xFF050505)
-val OnSurfaceShine = Color(0xFFEBEBEB) // From JSON: text #ebebeb
-val OnBackgroundShine = Color(0xFFEBEBEB)
-
-val PrimaryShine = Color(0xFF50ECB3) // From JSON: accent #50ecb3
-val OnPrimaryShine = Color(0xFF003823)
-val PrimaryContainerShine = Color(0xFF005234)
-val OnPrimaryContainerShine = Color(0xFF72FFC9)
-
-val SecondaryShine = Color(0xFF38D99E)
-val OnSecondaryShine = Color(0xFF003823)
-val SecondaryContainerShine = Color(0xFF163C2E)
-val OnSecondaryContainerShine = Color(0xFF86F3C7)
-
-val TertiaryShine = Color(0xFFFCD34D)
-val OnTertiaryShine = Color(0xFF402D00)
-val TertiaryContainerShine = Color(0xFF5C4300)
-val OnTertiaryContainerShine = Color(0xFFFFE088)
-
-val SurfaceVariantShine = Color(0xFF161816)
-val OnSurfaceVariantShine = Color(0xFFB0B7B1)
-
-val OutlineShine = Color(0xFF39433D)
-val OutlineVariantShine = Color(0xFF222924)
-
-// ==========================================
 // Semantic Status Colors
 // ==========================================
 val ErrorRed = Color(0xFFDC2626)

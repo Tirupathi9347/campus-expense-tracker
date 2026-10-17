@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Dark emerald background matching app brand identity -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#0A1B14" />
+        </shape>
+    </item>
+    <!-- Centered app logo -->
+    <item
+        android:width="120dp"
+        android:height="120dp"
+        android:gravity="center"
+        android:drawable="@drawable/app_logo" />
+</layer-list>

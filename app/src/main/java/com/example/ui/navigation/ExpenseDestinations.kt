@@ -10,7 +10,6 @@ import androidx.compose.ui.graphics.vector.ImageVector
 
 /**
  * Navigation destinations for the Campus Expense Tracker.
- * Demonstrates Android Basics with Compose Unit 4: Navigation.
  */
 sealed class Screen(val route: String, val title: String, val icon: ImageVector? = null) {
     object Dashboard : Screen("dashboard", "Dashboard", Icons.Default.Dashboard)

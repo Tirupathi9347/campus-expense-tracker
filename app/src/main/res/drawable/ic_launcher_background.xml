@@ -9,13 +9,13 @@
         <aapt:attr name="android:fillColor">
             <gradient
                 android:angle="315"
-                android:endColor="#0A2540"
-                android:startColor="#1E3A8A"
+                android:endColor="#040D08"
+                android:startColor="#0D241A"
                 android:type="linear" />
         </aapt:attr>
     </path>
-    <!-- Subtle circular radial highlight -->
+    <!-- Subtle circular emerald glow behind the emblem -->
     <path
-        android:fillColor="#15FFFFFF"
+        android:fillColor="#1534D399"
         android:pathData="M54,54m-42,0a42,42 0 1,0 84,0a42,42 0 1,0 -84,0" />
 </vector>

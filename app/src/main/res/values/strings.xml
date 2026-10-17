@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">Campus Expenses</string>
+    <string name="app_name">Campus Expense Tracker</string>
+    <string name="app_tagline">Spend wisely. Stay on track.</string>
 </resources>

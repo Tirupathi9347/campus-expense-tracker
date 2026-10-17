@@ -84,12 +84,19 @@ fun MonthlyBudgetHeroCard(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Column {
+                    val labelText = if (uiState.campusName.isNotBlank() && uiState.campusName != "University Campus") {
+                        "MONTHLY SPENDING • ${uiState.campusName.uppercase()}"
+                    } else {
+                        "MONTHLY SPENDING"
+                    }
                     Text(
-                        text = "MONTHLY SPENDING",
+                        text = labelText,
                         style = MaterialTheme.typography.labelMedium.copy(
                             letterSpacing = 1.2.sp
                         ),
-                        color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.7f)
+                        color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.7f),
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
                     )
                     Text(
                         text = uiState.currentMonthName,

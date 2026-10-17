@@ -9,8 +9,7 @@ import androidx.room.Update
 import kotlinx.coroutines.flow.Flow
 
 /**
- * Data Access Object (DAO) for expenses.
- * Following Android Basics with Compose Unit 6:
+ * Data Access Object (DAO) for expenses:
  * - Room generates implementation via KSP
  * - Returns Flow<T> for reactive UI updates
  * - suspend functions for write operations

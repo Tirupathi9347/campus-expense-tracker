@@ -35,7 +35,6 @@ import com.example.ui.splitbill.SplitBillScreen
 
 /**
  * Main Navigation host composable managing screen transitions and bottom navigation.
- * Implements Android Basics with Compose Unit 4: Navigation.
  */
 @Composable
 fun CampusExpenseNavHost(
@@ -47,6 +46,30 @@ fun CampusExpenseNavHost(
 
     // Show bottom bar only on top-level screens
     val isTopLevelScreen = bottomNavScreens.any { it.route == currentRoute }
+
+    // Helper for switching between top-level bottom nav destinations
+    val navigateToTopLevelDestination: (String) -> Unit = { targetRoute ->
+        if (targetRoute != currentRoute) {
+            if (targetRoute == Screen.Dashboard.route) {
+                navController.navigate(Screen.Dashboard.route) {
+                    popUpTo(navController.graph.findStartDestination().id) {
+                        inclusive = false
+                        saveState = false
+                    }
+                    launchSingleTop = true
+                    restoreState = false
+                }
+            } else {
+                navController.navigate(targetRoute) {
+                    popUpTo(navController.graph.findStartDestination().id) {
+                        saveState = true
+                    }
+                    launchSingleTop = true
+                    restoreState = true
+                }
+            }
+        }
+    }
 
     Scaffold(
         modifier = modifier.fillMaxSize(),
@@ -61,13 +84,7 @@ fun CampusExpenseNavHost(
                         NavigationBarItem(
                             selected = selected,
                             onClick = {
-                                navController.navigate(screen.route) {
-                                    popUpTo(navController.graph.findStartDestination().id) {
-                                        saveState = true
-                                    }
-                                    launchSingleTop = true
-                                    restoreState = true
-                                }
+                                navigateToTopLevelDestination(screen.route)
                             },
                             icon = {
                                 screen.icon?.let {
@@ -119,13 +136,13 @@ fun CampusExpenseNavHost(
                         navController.navigate(Screen.ExpenseEntry.createRoute(expenseId))
                     },
                     onNavigateToHistory = {
-                        navController.navigate(Screen.History.route)
+                        navigateToTopLevelDestination(Screen.History.route)
                     },
                     onNavigateToAnalytics = {
-                        navController.navigate(Screen.Analytics.route)
+                        navigateToTopLevelDestination(Screen.Analytics.route)
                     },
                     onNavigateToSplitBill = {
-                        navController.navigate(Screen.SplitBill.route)
+                        navigateToTopLevelDestination(Screen.SplitBill.route)
                     }
                 )
             }

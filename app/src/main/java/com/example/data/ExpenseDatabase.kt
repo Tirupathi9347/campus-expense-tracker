@@ -12,7 +12,6 @@ import java.util.Calendar
 
 /**
  * Main Room Database for the Campus Expense Tracker.
- * Demonstrates Android Basics with Compose Unit 6:
  * RoomDatabase abstract class with singleton instance pattern.
  */
 @Database(entities = [Expense::class, CategoryBudget::class], version = 2, exportSchema = false)

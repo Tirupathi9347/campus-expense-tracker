@@ -15,7 +15,6 @@ import com.example.ui.splitbill.SplitBillViewModel
 
 /**
  * Provides Factory to create instances of ViewModels for the entire Campus Expense Tracker.
- * Implements the standard ViewModelProvider.Factory pattern from Android Basics with Compose Unit 6.
  */
 object AppViewModelProvider {
     val Factory = viewModelFactory {

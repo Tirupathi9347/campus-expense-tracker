@@ -17,7 +17,6 @@ import kotlinx.coroutines.launch
 
 /**
  * UI State representation for the Add / Edit Expense screen.
- * Follows Android Basics with Compose Unit 2 (State) and Unit 6 (Room).
  */
 data class ExpenseDetails(
     val id: Long = 0L,

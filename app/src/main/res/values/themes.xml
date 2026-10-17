@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="Theme.MyApplication" parent="android:Theme.DeviceDefault.NoActionBar" />
+    <!-- Startup splash theme: used during cold boot so the user sees the official logo and brand colors instead of a blank screen -->
+    <style name="Theme.CampusExpenseTracker.Starting" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_window_background</item>
+        <!-- Android 12+ (API 31+) native splash screen configuration -->
+        <item name="android:windowSplashScreenBackground" tools:targetApi="31">#0A1B14</item>
+        <item name="android:windowSplashScreenAnimatedIcon" tools:targetApi="31">@drawable/app_logo</item>
+        <item name="android:windowSplashScreenIconBackgroundColor" tools:targetApi="31">#0A1B14</item>
+    </style>
+
+    <!-- Base application theme -->
+    <style name="Theme.CampusExpenseTracker" parent="Theme.CampusExpenseTracker.Starting" />
+
+    <!-- Manifest theme alias -->
+    <style name="Theme.MyApplication" parent="Theme.CampusExpenseTracker.Starting" />
 </resources>

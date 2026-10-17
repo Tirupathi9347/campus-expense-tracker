@@ -65,37 +65,9 @@ val DarkThemeColors: ColorScheme = darkColorScheme(
 )
 
 /**
- * 3. OG Shine Theme ColorScheme (based on og-shine-theme.json)
- * Surface: #0A0A0A, Accent: #50ECB3, Text: #EBEBEB
- */
-val OgShineThemeColors: ColorScheme = darkColorScheme(
-    primary = PrimaryShine,
-    onPrimary = OnPrimaryShine,
-    primaryContainer = PrimaryContainerShine,
-    onPrimaryContainer = OnPrimaryContainerShine,
-    secondary = SecondaryShine,
-    onSecondary = OnSecondaryShine,
-    secondaryContainer = SecondaryContainerShine,
-    onSecondaryContainer = OnSecondaryContainerShine,
-    tertiary = TertiaryShine,
-    onTertiary = OnTertiaryShine,
-    tertiaryContainer = TertiaryContainerShine,
-    onTertiaryContainer = OnTertiaryContainerShine,
-    background = BackgroundShine,
-    onBackground = OnBackgroundShine,
-    surface = SurfaceShine,
-    onSurface = OnSurfaceShine,
-    surfaceVariant = SurfaceVariantShine,
-    onSurfaceVariant = OnSurfaceVariantShine,
-    outline = OutlineShine,
-    outlineVariant = OutlineVariantShine,
-    error = ErrorRedDark
-)
-
-/**
  * Main application theme wrapper. Applies the requested [AppTheme].
  * If [AppTheme.SYSTEM] is set, respects the device system dark/light mode.
- * Persisted choices (Light, Dark, OG Shine) take full precedence.
+ * Persisted choices (Light, Dark) take full precedence.
  */
 @Composable
 fun CampusExpenseTheme(
@@ -106,7 +78,6 @@ fun CampusExpenseTheme(
     val colorScheme = when (appTheme) {
         AppTheme.LIGHT -> LightThemeColors
         AppTheme.DARK -> DarkThemeColors
-        AppTheme.OG_SHINE -> OgShineThemeColors
         AppTheme.SYSTEM -> if (darkTheme) DarkThemeColors else LightThemeColors
     }
 

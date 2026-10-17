@@ -21,7 +21,6 @@ import java.util.Calendar
 /**
  * Tests for expense calculation accuracy, monthly filtering, budget tracking,
  * and dynamic daily spending allowance.
- * Maps to Unit 4 & Unit 7 of Android Basics with Compose.
  */
 class ExpenseCalculationTest {
 
