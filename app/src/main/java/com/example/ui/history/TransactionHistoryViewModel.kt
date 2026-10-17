@@ -26,7 +26,7 @@ data class TransactionHistoryUiState(
     val selectedCategory: ExpenseCategory? = null,
     val sortOrder: SortOrder = SortOrder.DATE_NEWEST,
     val totalFilteredAmount: Double = 0.0,
-    val currencySymbol: String = "$",
+    val currencySymbol: String = "₹",
     val isLoading: Boolean = false
 )
 

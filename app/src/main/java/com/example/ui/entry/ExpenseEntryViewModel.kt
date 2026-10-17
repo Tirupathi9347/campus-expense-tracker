@@ -9,6 +9,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.data.Expense
 import com.example.data.ExpenseCategory
 import com.example.data.ExpenseRepository
+import com.example.data.UserPreferencesRepository
 import com.example.ui.dashboard.CategoryCapImpact
 import com.example.ui.dashboard.ExpenseCalculators
 import kotlinx.coroutines.flow.combine
@@ -71,7 +72,7 @@ object ExpenseValidator {
 class ExpenseEntryViewModel(
     savedStateHandle: SavedStateHandle,
     private val expenseRepository: ExpenseRepository,
-    private val userPreferencesRepository: com.example.data.UserPreferencesRepository
+    private val userPreferencesRepository: UserPreferencesRepository
 ) : ViewModel() {
 
     private val expenseId: Long = savedStateHandle.get<Long>("expenseId") ?: 0L
