@@ -55,6 +55,12 @@ class SettingsViewModel(
         }
     }
 
+    fun updateTheme(theme: com.example.data.AppTheme) {
+        viewModelScope.launch {
+            userPreferencesRepository.saveAppTheme(theme)
+        }
+    }
+
     fun updateCampusName(name: String) {
         viewModelScope.launch {
             userPreferencesRepository.saveCampusName(name)

@@ -36,6 +36,7 @@ import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.ui.dashboard.BurnRateForecast
@@ -101,7 +102,10 @@ fun BudgetBurnRateCard(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Row(verticalAlignment = Alignment.CenterVertically) {
+                Row(
+                    modifier = Modifier.weight(1f),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
                     Box(
                         modifier = Modifier
                             .size(36.dp)
@@ -117,13 +121,16 @@ fun BudgetBurnRateCard(
                         )
                     }
                     Spacer(modifier = Modifier.width(10.dp))
-                    Column {
+                    Column(modifier = Modifier.weight(1f, fill = false)) {
                         Text(
                             text = "BURN RATE & RUNOUT FORECAST",
                             style = MaterialTheme.typography.labelSmall.copy(
                                 fontWeight = FontWeight.Bold,
-                                letterSpacing = 1.sp
+                                letterSpacing = 0.8.sp,
+                                fontSize = 10.5.sp
                             ),
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
                         Text(
@@ -131,10 +138,14 @@ fun BudgetBurnRateCard(
                             style = MaterialTheme.typography.titleSmall.copy(
                                 fontWeight = FontWeight.SemiBold
                             ),
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis,
                             color = MaterialTheme.colorScheme.onSurface
                         )
                     }
                 }
+
+                Spacer(modifier = Modifier.width(8.dp))
 
                 // Status Pill
                 Surface(
@@ -143,7 +154,7 @@ fun BudgetBurnRateCard(
                     modifier = Modifier.testTag("burn_rate_status_pill")
                 ) {
                     Row(
-                        modifier = Modifier.padding(horizontal = 10.dp, vertical = 4.dp),
+                        modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Icon(
@@ -158,6 +169,8 @@ fun BudgetBurnRateCard(
                             style = MaterialTheme.typography.labelSmall.copy(
                                 fontWeight = FontWeight.Bold
                             ),
+                            maxLines = 1,
+                            softWrap = false,
                             color = statusColor
                         )
                     }
@@ -169,14 +182,18 @@ fun BudgetBurnRateCard(
             // Key Metrics Row
             Row(
                 modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.Top
             ) {
                 // Metric 1: Average Daily Burn Rate
                 Column(modifier = Modifier.weight(1f)) {
                     Text(
                         text = "Daily Burn Rate",
                         style = MaterialTheme.typography.labelSmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        maxLines = 1,
+                        softWrap = false,
+                        overflow = TextOverflow.Ellipsis
                     )
                     Text(
                         text = if (forecast.status == BurnRateStatus.INSUFFICIENT_DATA) {
@@ -184,20 +201,27 @@ fun BudgetBurnRateCard(
                         } else {
                             "${CurrencyFormatter.format(forecast.dailyBurnRate, currencySymbol)}/day"
                         },
-                        style = MaterialTheme.typography.titleLarge.copy(
-                            fontWeight = FontWeight.Bold
+                        style = MaterialTheme.typography.titleMedium.copy(
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 15.sp
                         ),
+                        maxLines = 1,
+                        softWrap = false,
+                        overflow = TextOverflow.Ellipsis,
                         color = MaterialTheme.colorScheme.onSurface,
                         modifier = Modifier.testTag("burn_rate_value")
                     )
                     Text(
                         text = "Over ${forecast.daysElapsed} day${if (forecast.daysElapsed != 1) "s" else ""} elapsed",
                         style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        maxLines = 1,
+                        softWrap = false,
+                        overflow = TextOverflow.Ellipsis
                     )
                 }
 
-                Spacer(modifier = Modifier.width(12.dp))
+                Spacer(modifier = Modifier.width(10.dp))
 
                 // Metric 2: Estimated Runout
                 Column(
@@ -207,7 +231,10 @@ fun BudgetBurnRateCard(
                     Text(
                         text = "Est. Budget Longevity",
                         style = MaterialTheme.typography.labelSmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        maxLines = 1,
+                        softWrap = false,
+                        overflow = TextOverflow.Ellipsis
                     )
                     val longevityText = when (forecast.status) {
                         BurnRateStatus.INSUFFICIENT_DATA -> "—"
@@ -217,9 +244,12 @@ fun BudgetBurnRateCard(
                     }
                     Text(
                         text = longevityText,
-                        style = MaterialTheme.typography.titleLarge.copy(
-                            fontWeight = FontWeight.Bold
+                        style = MaterialTheme.typography.titleMedium.copy(
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 15.sp
                         ),
+                        maxLines = 1,
+                        softWrap = false,
                         color = statusColor,
                         modifier = Modifier.testTag("burn_rate_longevity")
                     )
@@ -227,6 +257,9 @@ fun BudgetBurnRateCard(
                         text = forecast.formattedRunoutDate,
                         style = MaterialTheme.typography.bodySmall.copy(fontWeight = FontWeight.Medium),
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        maxLines = 1,
+                        softWrap = false,
+                        overflow = TextOverflow.Ellipsis,
                         modifier = Modifier.testTag("burn_rate_runout_date")
                     )
                 }

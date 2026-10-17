@@ -1,12 +1,16 @@
 package com.example
-
+ 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.example.data.UserPreferences
 import com.example.ui.navigation.CampusExpenseNavHost
 import com.example.ui.theme.CampusExpenseTheme
 
@@ -18,12 +22,21 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        val app = application as CampusExpenseApplication
+        val userPreferencesRepository = app.container.userPreferencesRepository
         setContent {
-            CampusExpenseTheme {
-                Surface(modifier = Modifier.fillMaxSize()) {
+            val userPrefs by userPreferencesRepository.userPreferencesFlow.collectAsStateWithLifecycle(
+                initialValue = UserPreferences()
+            )
+            CampusExpenseTheme(appTheme = userPrefs.appTheme) {
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colorScheme.background
+                ) {
                     CampusExpenseNavHost()
                 }
             }
         }
     }
 }
+

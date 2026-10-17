@@ -260,9 +260,9 @@ fun ExpenseEntryScreen(
                     shape = RoundedCornerShape(16.dp),
                     colors = CardDefaults.cardColors(
                         containerColor = when (capImpact.status) {
-                            CategoryBudgetStatus.EXCEEDED -> MaterialTheme.colorScheme.errorContainer.copy(alpha = 0.6f)
-                            CategoryBudgetStatus.WARNING -> Color(0xFFFEF3C7)
-                            CategoryBudgetStatus.ON_TRACK -> Color(0xFFD1FAE5)
+                            CategoryBudgetStatus.EXCEEDED -> MaterialTheme.colorScheme.errorContainer.copy(alpha = 0.35f)
+                            CategoryBudgetStatus.WARNING -> Color(0xFFF59E0B).copy(alpha = 0.18f)
+                            CategoryBudgetStatus.ON_TRACK -> Color(0xFF10B981).copy(alpha = 0.18f)
                             CategoryBudgetStatus.NO_BUDGET -> MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f)
                         }
                     ),

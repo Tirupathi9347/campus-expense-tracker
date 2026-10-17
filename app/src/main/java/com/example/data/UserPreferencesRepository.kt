@@ -15,10 +15,24 @@ import java.io.IOException
 
 val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "campus_user_preferences")
 
+enum class AppTheme(val storageKey: String, val displayName: String) {
+    SYSTEM("SYSTEM", "System Default"),
+    LIGHT("LIGHT", "Light"),
+    DARK("DARK", "Dark"),
+    OG_SHINE("OG_SHINE", "OG Shine");
+
+    companion object {
+        fun fromStorageKey(key: String?): AppTheme {
+            return entries.firstOrNull { it.storageKey.equals(key, ignoreCase = true) } ?: SYSTEM
+        }
+    }
+}
+
 data class UserPreferences(
     val monthlyBudget: Double = 5000.0,
     val currencySymbol: String = "₹",
-    val campusName: String = "University Campus"
+    val campusName: String = "University Campus",
+    val appTheme: AppTheme = AppTheme.SYSTEM
 )
 
 /**
@@ -32,6 +46,7 @@ class UserPreferencesRepository(
         val KEY_MONTHLY_BUDGET = doublePreferencesKey("monthly_budget")
         val KEY_CURRENCY_SYMBOL = stringPreferencesKey("currency_symbol")
         val KEY_CAMPUS_NAME = stringPreferencesKey("campus_name")
+        val KEY_APP_THEME = stringPreferencesKey("app_theme")
     }
 
     val userPreferencesFlow: Flow<UserPreferences> = context.dataStore.data
@@ -46,10 +61,12 @@ class UserPreferencesRepository(
             val budget = preferences[KEY_MONTHLY_BUDGET] ?: 5000.0
             val currency = preferences[KEY_CURRENCY_SYMBOL] ?: "₹"
             val campus = preferences[KEY_CAMPUS_NAME] ?: "University Campus"
+            val themeStr = preferences[KEY_APP_THEME] ?: AppTheme.SYSTEM.storageKey
             UserPreferences(
                 monthlyBudget = budget,
                 currencySymbol = currency,
-                campusName = campus
+                campusName = campus,
+                appTheme = AppTheme.fromStorageKey(themeStr)
             )
         }
 
@@ -68,6 +85,12 @@ class UserPreferencesRepository(
     suspend fun saveCampusName(name: String) {
         context.dataStore.edit { preferences ->
             preferences[KEY_CAMPUS_NAME] = name
+        }
+    }
+
+    suspend fun saveAppTheme(theme: AppTheme) {
+        context.dataStore.edit { preferences ->
+            preferences[KEY_APP_THEME] = theme.storageKey
         }
     }
 }

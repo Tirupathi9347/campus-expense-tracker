@@ -113,7 +113,9 @@ fun ExpenseItemCard(
                 Text(
                     text = CurrencyFormatter.format(expense.amount, currencySymbol),
                     style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
-                    color = MaterialTheme.colorScheme.primary
+                    color = MaterialTheme.colorScheme.primary,
+                    maxLines = 1,
+                    softWrap = false
                 )
             }
 

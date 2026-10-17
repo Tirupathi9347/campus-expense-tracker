@@ -39,6 +39,7 @@ import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.ui.dashboard.DailyAllowanceStatus
@@ -119,7 +120,10 @@ fun MonthlyBudgetHeroCard(
             Text(
                 text = CurrencyFormatter.format(uiState.currentMonthTotal, uiState.currencySymbol),
                 style = MaterialTheme.typography.displaySmall.copy(fontWeight = FontWeight.ExtraBold),
-                color = MaterialTheme.colorScheme.onPrimaryContainer
+                color = MaterialTheme.colorScheme.onPrimaryContainer,
+                maxLines = 1,
+                softWrap = false,
+                overflow = TextOverflow.Ellipsis
             )
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -144,24 +148,38 @@ fun MonthlyBudgetHeroCard(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Column {
+                Column(modifier = Modifier.weight(1f, fill = false)) {
                     Text(
                         text = "Budget Limit",
                         style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.75f)
+                        color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.75f),
+                        maxLines = 1,
+                        softWrap = false,
+                        overflow = TextOverflow.Ellipsis
                     )
                     Text(
                         text = CurrencyFormatter.format(uiState.monthlyBudget, uiState.currencySymbol),
                         style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.SemiBold),
-                        color = MaterialTheme.colorScheme.onPrimaryContainer
+                        color = MaterialTheme.colorScheme.onPrimaryContainer,
+                        maxLines = 1,
+                        softWrap = false,
+                        overflow = TextOverflow.Ellipsis
                     )
                 }
 
-                Column(horizontalAlignment = Alignment.End) {
+                Spacer(modifier = Modifier.width(8.dp))
+
+                Column(
+                    modifier = Modifier.weight(1f, fill = false),
+                    horizontalAlignment = Alignment.End
+                ) {
                     Text(
                         text = if (uiState.isOverBudget) "Over Budget By" else "Remaining",
                         style = MaterialTheme.typography.bodySmall,
-                        color = if (uiState.isOverBudget) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.75f)
+                        color = if (uiState.isOverBudget) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.75f),
+                        maxLines = 1,
+                        softWrap = false,
+                        overflow = TextOverflow.Ellipsis
                     )
                     Text(
                         text = if (uiState.isOverBudget) {
@@ -172,7 +190,10 @@ fun MonthlyBudgetHeroCard(
                         style = MaterialTheme.typography.titleSmall.copy(
                             fontWeight = FontWeight.Bold,
                             color = if (uiState.isOverBudget) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.onPrimaryContainer
-                        )
+                        ),
+                        maxLines = 1,
+                        softWrap = false,
+                        overflow = TextOverflow.Ellipsis
                     )
                 }
             }
@@ -380,13 +401,20 @@ fun DailyAllowanceCard(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = 12.dp, vertical = 10.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Column {
+                    Column(
+                        modifier = Modifier.weight(1f),
+                        horizontalAlignment = Alignment.Start
+                    ) {
                         Text(
                             text = "Remaining Budget",
-                            style = MaterialTheme.typography.labelSmall,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                            style = MaterialTheme.typography.labelSmall.copy(fontSize = 10.5.sp),
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            maxLines = 1,
+                            softWrap = false,
+                            overflow = TextOverflow.Ellipsis
                         )
                         Text(
                             text = if (uiState.remainingBudget < 0) {
@@ -394,29 +422,53 @@ fun DailyAllowanceCard(
                             } else {
                                 CurrencyFormatter.format(uiState.remainingBudget, uiState.currencySymbol)
                             },
-                            style = MaterialTheme.typography.labelLarge.copy(fontWeight = FontWeight.Bold),
-                            color = if (uiState.remainingBudget < 0) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.onSurface
+                            style = MaterialTheme.typography.labelLarge.copy(
+                                fontWeight = FontWeight.Bold,
+                                fontSize = 13.sp
+                            ),
+                            color = if (uiState.remainingBudget < 0) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.onSurface,
+                            maxLines = 1,
+                            softWrap = false,
+                            overflow = TextOverflow.Ellipsis
                         )
                     }
 
-                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                    Column(
+                        modifier = Modifier.weight(1f),
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
                         Text(
                             text = "Days in Month",
-                            style = MaterialTheme.typography.labelSmall,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                            style = MaterialTheme.typography.labelSmall.copy(fontSize = 10.5.sp),
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            maxLines = 1,
+                            softWrap = false,
+                            overflow = TextOverflow.Ellipsis
                         )
                         Text(
                             text = "${uiState.daysRemainingInMonth} days",
-                            style = MaterialTheme.typography.labelLarge.copy(fontWeight = FontWeight.Bold),
-                            color = MaterialTheme.colorScheme.onSurface
+                            style = MaterialTheme.typography.labelLarge.copy(
+                                fontWeight = FontWeight.Bold,
+                                fontSize = 13.sp
+                            ),
+                            color = MaterialTheme.colorScheme.onSurface,
+                            maxLines = 1,
+                            softWrap = false,
+                            overflow = TextOverflow.Ellipsis
                         )
                     }
 
-                    Column(horizontalAlignment = Alignment.End) {
+                    Column(
+                        modifier = Modifier.weight(1f),
+                        horizontalAlignment = Alignment.End
+                    ) {
                         Text(
                             text = "Pace Guidance",
-                            style = MaterialTheme.typography.labelSmall,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                            style = MaterialTheme.typography.labelSmall.copy(fontSize = 10.5.sp),
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            maxLines = 1,
+                            softWrap = false,
+                            overflow = TextOverflow.Ellipsis
                         )
                         Text(
                             text = if (uiState.dailyAllowance > 0) {
@@ -424,8 +476,14 @@ fun DailyAllowanceCard(
                             } else {
                                 "Pause Spending"
                             },
-                            style = MaterialTheme.typography.labelLarge.copy(fontWeight = FontWeight.Bold),
-                            color = statusColor
+                            style = MaterialTheme.typography.labelLarge.copy(
+                                fontWeight = FontWeight.Bold,
+                                fontSize = 13.sp
+                            ),
+                            color = statusColor,
+                            maxLines = 1,
+                            softWrap = false,
+                            overflow = TextOverflow.Ellipsis
                         )
                     }
                 }
@@ -435,7 +493,9 @@ fun DailyAllowanceCard(
 }
 
 /**
- * Small metric tile used in summary grids.
+ * Responsive small metric tile used in summary grids.
+ * Layout places title and icon at top and amount below with full card width,
+ * preventing awkward vertical text wrapping or isolated decimal digit breaks.
  */
 @Composable
 fun MetricTile(
@@ -453,39 +513,52 @@ fun MetricTile(
         ),
         elevation = CardDefaults.cardElevation(defaultElevation = 1.dp)
     ) {
-        Row(
+        Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(14.dp),
-            verticalAlignment = Alignment.CenterVertically
+                .padding(horizontal = 14.dp, vertical = 12.dp),
+            verticalArrangement = Arrangement.spacedBy(6.dp)
         ) {
-            Box(
-                modifier = Modifier
-                    .size(40.dp)
-                    .clip(CircleShape)
-                    .background(iconTint.copy(alpha = 0.15f)),
-                contentAlignment = Alignment.Center
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
             ) {
-                Icon(
-                    imageVector = icon,
-                    contentDescription = title,
-                    tint = iconTint,
-                    modifier = Modifier.size(20.dp)
-                )
-            }
-            Spacer(modifier = Modifier.width(12.dp))
-            Column {
                 Text(
                     text = title,
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                    style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Medium),
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    maxLines = 1,
+                    softWrap = false,
+                    overflow = TextOverflow.Ellipsis,
+                    modifier = Modifier.weight(1f, fill = false)
                 )
-                Text(
-                    text = value,
-                    style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
-                    color = MaterialTheme.colorScheme.onSurface
-                )
+                Box(
+                    modifier = Modifier
+                        .size(28.dp)
+                        .clip(CircleShape)
+                        .background(iconTint.copy(alpha = 0.15f)),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Icon(
+                        imageVector = icon,
+                        contentDescription = null,
+                        tint = iconTint,
+                        modifier = Modifier.size(16.dp)
+                    )
+                }
             }
+            Text(
+                text = value,
+                style = MaterialTheme.typography.titleMedium.copy(
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 15.sp
+                ),
+                color = MaterialTheme.colorScheme.onSurface,
+                maxLines = 1,
+                softWrap = false,
+                overflow = TextOverflow.Ellipsis
+            )
         }
     }
 }
